@@ -14,9 +14,8 @@ ENV PATH="/mise/shims:$PATH"
 
 RUN curl https://mise.run | sh
 
-COPY .mise.toml /mise/config.toml
-
-RUN mise install
+# mise use -g: 安装并激活工具（创建 shims，使命令在 PATH 中可用）
+RUN mise use -g go@latest node@lts hugo@latest
 
 # Pre-fetch Hugo docsy module
 RUN mkdir -p /tmp/hugo-mod-test && cd /tmp/hugo-mod-test \
