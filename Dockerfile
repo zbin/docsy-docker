@@ -15,7 +15,8 @@ ENV PATH="/mise/shims:$PATH"
 RUN curl https://mise.run | sh
 
 # mise use -g: 安装并激活工具（创建 shims，使命令在 PATH 中可用）
-RUN mise use -g go@latest node@lts hugo@latest
+# hugo-extended: 带 SCSS/SASS 转译支持的 Hugo 版本
+RUN mise use -g go@latest node@lts hugo-extended@latest
 
 # Pre-fetch Hugo docsy module
 RUN mkdir -p /tmp/hugo-mod-test && cd /tmp/hugo-mod-test \
